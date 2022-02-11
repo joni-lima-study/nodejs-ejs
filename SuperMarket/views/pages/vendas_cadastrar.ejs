@@ -1,0 +1,59 @@
+<%- include("../partials/header"); %>
+
+<%- include("../partials/navigation_bar"); %>
+
+    <main>
+        <section class="container">
+            <div class="col-12 text-left mt-5">
+                <h1>Vender Produtos</h1>
+            </div>
+            <div class="row my-5">
+                <div class="col-12">
+                    <form id="form" action="/vendas_cadastrar" method="POST">
+                        <label for="cliente_id">Cliente</label>
+                        <select class="form-control" name="cliente_id" id="cliente_id">
+                            <option selected>Escolha o cliente</option>
+                            <% clientes.forEach(function(cliente){ %>
+                                <option data-preco="<%= cliente.preco %>" value="<%= cliente.id %>">
+                                    <%= cliente.nome %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <div class="form-group">
+                            <label for="produto_id">Produto</label>
+                            <select class="form-control" name="produto_id" id="produto_id">
+                                <option selected>Escolha o Produto</option>
+                                <% produtos.forEach(function(produto){ %>
+                                    <option data-preco="<%= produto.preco %>" value="<%= produto.id %>">
+                                        <%= produto.nome %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nota_fiscal">Nota Fiscal</label>
+                            <input class="form-control" type="text" id="nota_fiscal" name="nf" placeholder="Nota Fiscal"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade</label>
+                            <input class="form-control" type="text" id="quantidade" name="quantidade"
+                                placeholder="Quantidade" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="total">Total</label>
+                            <input class="form-control" type="text" id="total" name="total" placeholder="Total"
+                                readonly>
+                        </div>
+
+                        <div>
+                            <input class="btn btn-success" type="submit" value="Salvar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include("../partials/footer"); %>
+    <script src="js/vendas_cadastrar.js"></script>

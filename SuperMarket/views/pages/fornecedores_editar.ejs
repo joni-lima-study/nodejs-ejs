@@ -1,0 +1,64 @@
+<%- include("../partials/header"); %>
+
+<%- include("../partials/navigation_bar"); %>
+
+    <main>
+        <section class="container ">
+            <div class="row my-5">
+                <% if (id) { %>
+                    <div class="col-6 text-left">
+                        <h1>Editar Fornecedor</h1>
+                    </div>
+                    <% } else { %>
+                    <div class="col-6 text-left">
+                        <h1>Cadastrar Fornecedor</h1>
+                    </div>
+                    <% } %>
+                        <div class="col-12">
+                            <form id="form" action="/fornecedores_editar" method="POST">
+                                <input type="hidden" name="id" value="<%=id%>">
+                                <div class="form-group">
+                                    <label for="nome">Produto</label>
+                                    <input class="form-control" type="text" id="nome" name="nome" value="<%=nome%>"
+                                        placeholder="Nome do fornecedor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cnpj">CNPJ</label>
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" value="<%=cnpj%>"
+                                        placeholder="CNPJ do Fornecedor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefone">Telefone</label>
+                                    <input class="form-control" type="text" id="telefone" name="telefone" value="<%=telefone%>"
+                                        placeholder="Telefone do Fornecedor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input class="form-control" type="text" id="email" name="email" value="<%=email%>"
+                                        placeholder="E-Mail do Fornecedor" required>
+                                </div>                            
+                                
+                                
+                                <div>
+                                    <input class="btn btn-success" type="submit" value="Salvar">
+                                    <input class="btn btn-success" type="reset" value="Limpar">
+                                </div>
+                            </form>
+
+                        </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <%- include("../partials/footer"); %>
+        <script src="js/produtos_editar.js"></script>

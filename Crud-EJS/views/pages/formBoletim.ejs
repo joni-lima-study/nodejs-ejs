@@ -1,0 +1,55 @@
+<%- include('../partials/header'); %>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-5">Cadastrar Alunos/Notas</h1>
+            <form action="/cadastrarBoletim" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do aluno" onblur="valida_nome(this)" onkeyup="maiuscula(this)" required>
+                </div>
+                <div class="form-group">
+                    <label for="nota1">1 NOTA</label>
+                    <input class="form-control" type="number" id="nota1" name="nota1"
+                        placeholder="Valor da 1ª Nota" onblur="valida_nota1(this)" required> 
+                </div>
+                <div class="form-group">
+                    <label for="nota2">2 NOTA</label>
+                    <input class="form-control" type="number" id="nota2" name="nota2"
+                        placeholder="Valor da 2ª Nota" onblur="valida_nota2(this)" required>
+                </div>
+                <div class="form-group">
+                    <label for="nota3">3 NOTA</label>
+                    <input class="form-control" type="number" id="nota3" name="nota3"
+                        placeholder="Valor da 3ª Nota" onblur="valida_nota3(this)" required>
+                </div>
+                <div id="dialog_erro" class="alert alert-warning alert-dismissible fade show text-center" role="alert"
+                style="display: none;">
+                <p>
+                  Por favor, verifique os campos em vermelho e tente novamente.
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div id="dialog_sucesso" class="alert alert-success alert-dismissible fade show text-center"
+                role="alert" style="display: none;">
+                <p>
+                  Enviado com sucesso.
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="refre">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+               
+                <button type="button" class="btn btn-primary" onclick="enviar_dados()">Enviar</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include('../partials/footer'); %>

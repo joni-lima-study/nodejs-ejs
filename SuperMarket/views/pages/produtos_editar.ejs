@@ -1,0 +1,88 @@
+<%- include("../partials/header"); %>
+
+<%- include("../partials/navigation_bar"); %>
+
+    <main>
+        <section class="container ">
+            <div class="row my-5">
+                <% if (id) { %>
+                    <div class="col-6 text-left">
+                        <h1>Editar dos Produtos</h1>
+                    </div>
+                    <% } else { %>
+                    <div class="col-6 text-left">
+                        <h1>Cadastrar dos Produtos</h1>
+                    </div>
+                    <% } %>
+                        <div class="col-12">
+                            <form id="form" action="/produtos_editar" method="POST">
+                                <input type="hidden" name="id" value="<%=id%>">
+                                <div class="form-group">
+                                    <label for="nome">Produto</label>
+                                    <input class="form-control" type="text" id="nome" name="nome" value="<%=nome%>"
+                                        placeholder="Nome do produto" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preco">Preco</label>
+                                    <input class="form-control" type="text" id="preco" name="preco" value="<%=preco%>"
+                                        placeholder="Preço do produto" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fornecedor">Fornecedor</label>
+                                    <select class="form-control" name="fornecedor_id" id="fornecedor_id">
+                                        <option selected>Escolha o fronecedor</option>
+                                        <% fornecedores.forEach(function(fornecedor){ %>
+                                            <option value="<%= fornecedor.id %>" <%=fornecedor.id==fornecedor_id
+                                                ? 'selected' : '' %>><%= fornecedor.nome %>
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="volume">Especificação Volume</label>
+                                    <select class="form-control" name="volume_id" id="volume_id" required>
+                                        <option selected>Tipo de empacotamento</option>
+                                        <% volumes.forEach(function(volume){ %>
+
+                                            <option value="<%= volume.id %>" <%=volume.id==volume_id ? 'selected' : ''
+                                                %>><%= volume.nome %>
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="setor_id">Setor</label>
+                                    <select class="form-control" name="setor_id" id="setor_id">
+                                        <option selected>Destino da mercadoria</option>
+                                        <% setores.forEach(function(setor){ %>
+                                            <option value="<%= setor.id %>" <%=setor.id==setor_id ? 'selected' : '' %>>
+                                                <%= setor.nome %>
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <input class="btn btn-success" type="submit" value="Salvar">
+                                    <input class="btn btn-success" type="reset" value="Limpar">
+                                </div>
+                            </form>
+
+                        </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <%- include("../partials/footer"); %>
+        <script src="js/produtos_editar.js"></script>

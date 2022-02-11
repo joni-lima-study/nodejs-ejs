@@ -1,0 +1,59 @@
+<%- include('../partials/header'); %>
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">Editar Alunos/Notas</h1>
+
+                <form action="/editarBoletim" method="POST">
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                        <input class="form-control" type="text" id="id" name="id" placeholder="ID do aluno" readonly
+                            value="<%= resultado._id %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do aluno"
+                            onblur="valida_nome(this)" onkeyup="maiuscula(this)" required value="<%= resultado.nome %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nota1">1 NOTA</label>
+                        <input class="form-control" type="number" id="nota1" name="nota1" placeholder="Valor da 1ª Nota"
+                            onblur="valida_nota1(this)" required value="<%= resultado.nota1 %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nota2">2 NOTA</label>
+                        <input class="form-control" type="number" id="nota2" name="nota2" placeholder="Valor da 2ª Nota"
+                            onblur="valida_nota2(this)" required value="<%= resultado.nota2 %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nota3">3 NOTA</label>
+                        <input class="form-control" type="number" id="nota3" name="nota3" placeholder="Valor da 3ª Nota"
+                            onblur="valida_nota3(this)" required value="<%= resultado.nota3 %>" required>
+                    </div>
+                    <div id="dialog_erro" class="alert alert-warning alert-dismissible fade show text-center"
+                        role="alert" style="display: none;">
+                        <p>
+                            Por favor, verifique os campos em vermelho e tente novamente.
+                        </p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="dialog_sucesso" class="alert alert-success alert-dismissible fade show text-center"
+                        role="alert" style="display: none;">
+                        <p>
+                            Edição enviada com sucesso.
+                        </p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="refre">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+<%- include('../partials/footer'); %>
